@@ -41,10 +41,3 @@ for n in range(1,int(topp)):
     for h in inalt[str(place)]:
         print(f"The number {lopp+1} place goes to {names[h]}")
         lopp+=1
-        #if lopp < topp:
-        #    print(f"Place {lopp} goes to {names[h]}")
-        #    lopp +=1
-#    print(f"Place {n} goes to :: {names[sort_inalt[-1]]}")
-#print(f"Standard Deviation of the sequence: {statistics.stdev(sorted_randoms)}")
-#for n in inalt.keys():
-#    print(f"{n} _ {inalt[n]}")
