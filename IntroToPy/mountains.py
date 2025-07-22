@@ -29,14 +29,14 @@ sort_inalt = [int(x) for x in sort_inalt]
 print(f"Minimum altitude :: {sort_inalt[0]}; Maximum random :: {sort_inalt[-1]} ")
 print(f"The average value of altitude :: {statistics.mean(sort_inalt)}")
 print(f"Median of the heights :: {statistics.median(sort_inalt)}")
-topp =int( input("How many mountains should be on the podium?"))
+topp =int( input("How many mountains should be on the podium? \n"))
 lopp =0
 #print(f"{inalt[898]}")
 if topp > len(sort_inalt):
     topp = len(sort_inalt)
     print(f"Hey! Those are too many mountains!")
     print(f"There are only {topp} mountains to show:")
-for n in range(1,int(topp)+1):
+for n in range(1,int(topp)):
     place = sort_inalt[int(-n)]
     for h in inalt[str(place)]:
         print(f"The number {lopp+1} place goes to {names[h]}")
