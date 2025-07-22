@@ -1,16 +1,20 @@
-def roman_converter (num):
-    str=""
-    value = [1000, 500, 100, 50, 10, 5, 1]
-    letter = ["M", "D", "C", "L", "X", "V", "I"]
-    poz=0
-    if type(num) == type(11) :
-        if num in range (0,4000):
-            while poz < len(value):
-                while num >= value[poz] :
-                    str += letter[poz]
-                    num -=value[poz]
-                poz += 1
-            return str
-    return None
+def roman_converter(num):
+    if not isinstance(num, int):
+        return None
+    
+    if num <= 0 or num >= 4000:
+        return None
+    
+    ROMAN_NUMS = [
+        (1, "I")
+    ]
 
-print(roman_converter(7))
+    out = ''
+    while num >= 5:
+        out += 'V'
+        num -= 5
+    while num >= 1:
+        out += 'I'
+        num -= 1
+
+    return out
