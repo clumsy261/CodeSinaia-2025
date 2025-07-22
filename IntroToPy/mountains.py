@@ -8,7 +8,7 @@ count= 0
 with open("IntroToPy/mountains.tsv", "r") as data:
     for line in data.readlines():
         part = line.split("\t", -1)
-        print(f"{part[0]} _ {part[1]} _ {part[2]} _ {part[3]}")
+        #print(f"{part[0]} _ {part[1]} _ {part[2]} _ {part[3]}")
         names.append(part[0])
         if part[0] not in munti:
             munti[part[0]] = []
@@ -25,12 +25,22 @@ print(f"The unmber of unknown altitudes :: {len(inalt["NULL"])}")
 sort_inalt = sorted(inalt.keys())
 sort_inalt.pop()
 sort_inalt = [int(x) for x in sort_inalt]
+#print(f"{names[[inalt[smth]][0]]}")
 print(f"Minimum altitude :: {sort_inalt[0]}; Maximum random :: {sort_inalt[-1]} ")
 print(f"The average value of altitude :: {statistics.mean(sort_inalt)}")
 print(f"Median of the heights :: {statistics.median(sort_inalt)}")
 topp =int( input("How many mountains should be on the podium?"))
-for n in range(1,int(topp)):
-    print(f"Place {n} goes to :: {names[sort_inalt[-1]]}")
+lopp =0
+#print(f"{inalt[898]}")
+for n in range(1,int(topp)+1):
+    place = sort_inalt[int(-n)]
+    for h in inalt[str(place)]:
+        print(f"The number {lopp+1} place goes to {names[h]}")
+        lopp+=1
+        #if lopp < topp:
+        #    print(f"Place {lopp} goes to {names[h]}")
+        #    lopp +=1
+#    print(f"Place {n} goes to :: {names[sort_inalt[-1]]}")
 #print(f"Standard Deviation of the sequence: {statistics.stdev(sorted_randoms)}")
 #for n in inalt.keys():
 #    print(f"{n} _ {inalt[n]}")
