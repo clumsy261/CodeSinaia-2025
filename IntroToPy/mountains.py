@@ -31,7 +31,6 @@ print(f"The average value of altitude :: {statistics.mean(sort_inalt)}")
 print(f"Median of the heights :: {statistics.median(sort_inalt)}")
 topp =int( input("How many mountains should be on the podium? \n"))
 lopp =0
-print(f"{names[791]}")
 if topp > len(sort_inalt):
     topp = len(sort_inalt)
     print(f"Hey! Those are too many mountains!")
