@@ -10,11 +10,15 @@ def relative_to_assets(path: str) -> Path:
 def center_window(window, width=300, height=100):
     window.update_idletasks()
     # TODO: Center the window on the screen (with the formulas)
-    
+    screen_width = window.winfo_screenwidth()
+    screen_height = window.winfo_screenheight()
+    display_x = (screen_width // 2) - (width // 2)
+    display_y = (screen_height // 2) - (height // 2)
+    window.geometry(f"{width}x{height}+{display_x}+{display_y}")
     # TODO: Set the window icon
     # Ensure you have a code_sinaia_logo.ico file in the same directory
     # use relative_to_assets to get the path
-    
+    relative_to_assets()
     
     # focus on window
     window.focus_force()
@@ -54,15 +58,19 @@ def load_success_alert():
     ok_button.pack(pady=10)
     
     #TODO: center window
-    
+    center_window(alert)
 
 #TODO: Create alert window for success clear
 def clear_success_alert():
     alert = tk.Toplevel()
-    
+    alert.title("Success")
+    alert.configure(bg="#d4edda")
+    alert_label = tk.Label(alert, text="Chat cleared successfully.", bg="#d4edda", fg="#155724", font=("Helvetica", 12))
+    alert_label.pack(expand=True)
+    ok_button = tk.Button(alert, text="OK", command=alert.destroy, bg="#c3e6cb", fg="#155724")
+    ok_button.pack(pady=10)
     #TODO: create alert and center it
     
-    alert_label = tk.Label(alert, text="Chat cleared successfully.", bg="#d4edda", fg="#155724", font=("Helvetica", 12))
     alert_label.pack(expand=True)
 
 #TODO: Create alert for no history found
@@ -70,9 +78,14 @@ def no_history_alert():
     alert = tk.Toplevel()
     
     #TODO: create alert and center it
-    
+    alert = tk.Toplevel()
+    alert.title("Error")
+    alert.configure(bg="#d4edda")
     alert_label = tk.Label(alert, text="No chat history found.", bg="#f8d7da", fg="#ff0019", font=("Helvetica", 12))
     alert_label.pack(expand=True)
+    ok_button = tk.Button(alert, text="OK", command=alert.destroy, bg="#c3e6cb", fg="#ef0009")
+    ok_button.pack(pady=10)
+    center_window(alert)
     
 def json_decode_error_alert():
     alert = tk.Toplevel()
