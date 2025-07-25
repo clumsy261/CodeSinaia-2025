@@ -31,7 +31,7 @@ def open_app():
     #TODO: de ce dă eroare? REZOLVĂ
     # upper left image logo
     try:
-        root.iconbitmap("code_sinaia_logo.ico")  # Ensure you have a code_sinaia_logo.ico file in the assets directory
+        root.iconbitmap(relative_to_assets("code_sinaia_logo.ico"))  # Ensure you have a code_sinaia_logo.ico file in the assets directory
     except tk.TclError:
         messagebox.showerror("Error", "Icon file not found. Please ensure 'code_sinaia_logo.ico' is in the assets directory.")
         return
@@ -58,7 +58,160 @@ def open_app():
         save_chat(chat_log)
         
     #TODO: insert the code here
-    
+    root.configure(bg = "#D9D9D9")
+
+
+    canvas = Canvas(
+        root,
+        bg = "#D9D9D9",
+        height = 600,
+        width = 800,
+        bd = 0,
+        highlightthickness = 0,
+        relief = "ridge"
+    )
+
+    canvas.place(x = 0, y = 0)
+    canvas.create_rectangle(
+        30.0,
+        73.0,
+        770.0,
+        455.0,
+        fill="#A9A9A9",
+        outline="")
+
+    canvas.create_rectangle(
+        30.0,
+        465.0,
+        770.0,
+        505.0,
+        fill="#A9A9A9",
+        outline="")
+
+    button_image_1 = PhotoImage(
+        file=relative_to_assets("button_1.png"))
+    button_1 = Button(
+        image=button_image_1,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: on_send() ,
+        relief="flat",
+        activebackground="#D9D9D9",
+        background="#D9D9D9"
+    )
+    button_1.place(
+        x=30.0,
+        y=517.0,
+        width=130.0,
+        height=40.0
+    )
+
+    button_image_2 = PhotoImage(
+        file=relative_to_assets("button_2.png"))
+    button_2 = Button(
+        image=button_image_2,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: on_clear(),
+        relief="flat",
+        activebackground="#D9D9D9",
+        background="#D9D9D9"
+    )
+    button_2.place(
+        x=195.0,
+        y=517.0,
+        width=130.0,
+        height=40.0
+    )
+
+    button_image_3 = PhotoImage(
+        file=relative_to_assets("button_3.png"))
+    button_3 = Button(
+        image=button_image_3,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda:on_load(),
+        relief="flat",
+        activebackground="#D9D9D9",
+        background="#D9D9D9"
+    )
+    button_3.place(
+        x=610.0,
+        y=517.0,
+        width=130.0,
+        height=40.0
+    )
+
+    button_image_4 = PhotoImage(
+        file=relative_to_assets("button_4.png"))
+    button_4 = Button(
+        image=button_image_4,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: on_save(),
+        relief="flat",
+        activebackground="#D9D9D9",
+        background="#D9D9D9"
+    )
+    button_4.place(
+        x=439.0,
+        y=516.0,
+        width=130.0,
+        height=40.0
+    )
+
+    canvas.create_text(
+        260.0,
+        16.999999999999993,
+        anchor="nw",
+        text="CLUMSY CHATBOT",
+        fill="#000000",
+        font=("Inter", 32 * -1)
+    )
+
+    button_image_5 = PhotoImage(
+        file=relative_to_assets("button_5.png"))
+    button_5 = Button(
+        image=button_image_5,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: print("button_5 clicked"),
+        relief="flat",
+        activebackground="#D9D9D9",
+        background="#D9D9D9"
+    )
+    button_5.place(
+        x=709.0,
+        y=575.0,
+        width=61.0,
+        height=20.0
+    )
+
+    canvas.create_rectangle(
+        -4.0,
+        562.0,
+        800.0,
+        566.0,
+        fill="#C4C4C4",
+        outline="")
+
+    canvas.create_text(
+        323.0,
+        575.0,
+        anchor="nw",
+        text="™CodeSinaia 2025",
+        fill="#000000",
+        font=("Inter", 14 * -1)
+    )
+
+    canvas.create_text(
+        30.0,
+        575.0,
+        anchor="nw",
+        text="©2025 Inproted",
+        fill="#000000",
+        font=("Inter", 14 * -1)
+    )
     
     # Chat log (Text widget)
     chat_log = Text(root, bg="#C5C5C5", bd=0, state=tk.DISABLED, wrap="word")
