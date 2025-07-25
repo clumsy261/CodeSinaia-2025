@@ -1,3 +1,4 @@
+import random
 import re
 from responses import get_custom_response, unknown
 RULES = [
@@ -58,11 +59,16 @@ def message_probability(user_message, keywords, single_response=False, required=
     #TODO: Calculează probabilitatea mesajului message_certainty
     #pt fiecare cuvant din mesaj care apare in recognised_words
     #message_certainty este incrementat
-    
+    message_certainty = 0
+    for word in user_message.split():
+        if word in keywords:
+            message_certainty += 1
     #TODO: Calculează match_ratio ca raportul dintre message_certainty și numărul de cuvinte din keywords
     #dacă keywords este gol, setăm match_ratio la 0
-    
-    
+    if len(keywords):
+        match_ratio = message_certainty / len(keywords)
+    else:
+        match_ratio =0
     if required:
         if not all(word in user_message for word in required):
             return 0
@@ -80,22 +86,27 @@ def check_all_messages(message):
         
         #TODO: Calculează probabilitatea mesajului pentru fiecare regulă
         #folosind funcția message_probability definită mai sus
-        
+        current_prob = message_probability(message, rule['keywords'])
         #TODO: dacă prob este mai mare decât highest_prob,
         # actualizează best_response și highest_prob
-        
-        
+        if current_prob > highest_prob:
+            best_response = rule["response"]
+            highest_prob = current_prob
     #TODO: returneaza raspunsul, fie cel de eroare, fie cel gasit 
-    
+    if best_response:
+        return best_response
+    else:
+        return unknown()
 
 def get_response(user_input):
     None
     #TODO: Verifică dacă user_input este gol sau conține doar spații
-
+    #user_input= user_input.strip()
     #TODO: apeleaza functia split pentru a împărți mesajul în cuvinte 
-    
+    #user_mess = user_input.split()
     # apoi returneaza rezultatul obtinut folosind check_all_messages pentru a verifica mesajul
-
+    output = check_all_messages(user_input)
+    return output
 # Ce inseamna \s+|[,;?.-]\s*?
 # \s+ înseamnă unul sau mai multe spații albe (inclusiv tab-uri și linii noi)
 # | este operatorul "sau" în expresiile regulate
