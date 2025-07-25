@@ -175,7 +175,7 @@ def open_app():
         image=button_image_5,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: print("button_5 clicked"),
+        command=lambda: webbrowser.open("https://github.com/clumsy261/CodeSinaia-2025"),
         relief="flat",
         activebackground="#D9D9D9",
         background="#D9D9D9"
