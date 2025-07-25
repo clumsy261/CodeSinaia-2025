@@ -70,7 +70,7 @@ def clear_success_alert():
     ok_button = tk.Button(alert, text="OK", command=alert.destroy, bg="#c3e6cb", fg="#155724")
     ok_button.pack(pady=10)
     #TODO: create alert and center it
-    
+    center_window(alert)
     alert_label.pack(expand=True)
 
 #TODO: Create alert for no history found
@@ -86,7 +86,7 @@ def no_history_alert():
     ok_button = tk.Button(alert, text="OK", command=alert.destroy, bg="#c3e6cb", fg="#ef0009")
     ok_button.pack(pady=10)
     center_window(alert)
-    
+
 def json_decode_error_alert():
     alert = tk.Toplevel()
     alert.title("Error")
